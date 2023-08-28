@@ -22,17 +22,20 @@ jobs:
           dotnet-version: '7.x'
           include-prerelease: true
 
+      - name: Change directory to Backend project # Add this step
+        run: cd "C:\DotNetProjects\Rent28Aug\RentalListingsAPI" 
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/RentalListingsAPI
+        run: dotnet publish -c Release -o ./RentalListingsAPI
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/RentalListingsAPI
+          path: ./RentalListingsAPI
 
   deploy:
     runs-on: windows-latest
