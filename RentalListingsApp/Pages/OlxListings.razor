@@ -1,0 +1,47 @@
+@page "/olx-listings"
+@inject HttpClient Http
+@using RentalListingsApp.Shared.Models
+@using RentalListingsApp.Components
+
+<h1>Olx Listings</h1>
+
+@if (listings == null)
+{
+    <p>Loading...</p>
+}
+else if (listings.Count == 0)
+{
+    <p>No listings available.</p>
+}
+else
+{
+    @foreach (var listing in listings)
+    {
+        <RentalCard Listing="listing" />
+    }
+}
+
+@code {
+    private List<Listing>? listings;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Console.WriteLine("Fetching data from API...");  // Logging
+            listings = await Http.GetFromJsonAsync<List<Listing>>("http://localhost:5224/listings");
+            if (listings != null)
+            {
+                Console.WriteLine($"Received {listings.Count} listings.");  // Logging
+            }
+            else
+            {
+                Console.WriteLine("Received null from the API.");  // Logging
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");  // Exception Handling
+        }
+    }
+}

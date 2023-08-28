@@ -1,0 +1,21 @@
+@using RentalListingsApp.Shared.Models
+@code {
+    [Parameter] public Listing Listing { get; set; }
+}
+
+<div class="rental-card">
+    @* <img src="@Listing.MainPhotoUrl" alt="@Listing.Title" /> *@
+    <h3>@Listing.Title</h3>
+    <p>@Listing.Description</p>
+    <p>Price: @Listing.Price</p>
+    <p>Area: @Listing.Area</p>
+    <p>Date: @Listing.Date.ToShortDateString()</p>
+    <button @onclick="SaveForLater">Save for Later</button>
+</div>
+
+@code {
+    private void SaveForLater()
+    {
+        // Implement save for later logic
+    }
+}
