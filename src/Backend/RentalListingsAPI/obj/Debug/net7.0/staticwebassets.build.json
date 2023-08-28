@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "q5/DXKhhZERwuOpo0VNDS2ZgWdAwkXvk+RxUxgX8W4w=",
+  "Source": "RentalListingsAPI",
+  "BasePath": "_content/RentalListingsAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
